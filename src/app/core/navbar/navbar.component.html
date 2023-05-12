@@ -1,1 +1,21 @@
-<p>navbar works!</p>
+<mat-toolbar class="navbar">
+  <span>The Cookbook</span>
+  <span class="example-spacer"></span>
+    <button mat-button color="primary" class="btn-navbar">Recipes</button>
+    <button mat-button color="primary" class="btn-navbar">Login</button>
+</mat-toolbar>
+
+<div class="wrapper">
+
+  <div class="sidebar">
+    <img src="assets/images/home2.jpg">
+  </div>
+
+  <div>
+    <input type="text">
+
+    <button routerLink="/#"><img src="assets/images/button-add-recipe.png">Ajouter Recette</button>
+    <button routerLink="/#"><img src="assets/images/button-livre.png">Voir les recettes</button>
+  </div>
+
+</div>

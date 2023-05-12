@@ -1,26 +1,26 @@
-export interface recipe {
+export interface Recipe {
   name: string;
   instruction: string;
-  ingredient: []
+  Ingredient: []
 }
 
-export interface ingredient {
+export interface Ingredient {
   name: string;
   quantity: number;
   uniteMesure: string
 }
 
-export interface aliment {
+export interface Aliment {
   name: string
 }
 
-export interface shoppinglist {
-  aliment: [];
+export interface Shoppinglist {
+  Aliment: [];
   quantity: number;
   creationDate: string
 }
 
-export interface user {
+export interface User {
   username : string;
   email: string;
   password: string

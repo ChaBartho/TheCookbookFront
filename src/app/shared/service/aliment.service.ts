@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { aliment } from '../model/cookbook';
+import { Aliment } from '../model/cookbook';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,8 +14,8 @@ export class AlimentService {
 
   getOneAliment(){}
 
-  getAllAliment() : Observable<aliment>{
-    return this._httpClient.get<aliment>("http://localhost:8080/aliment/")
+  getAllAliment() : Observable<Aliment>{
+    return this._httpClient.get<Aliment>("http://localhost:8080/aliment/")
   }
 
   deleteAliment(){}
