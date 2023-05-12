@@ -1,21 +1,31 @@
-<mat-toolbar class="navbar">
-  <span>The Cookbook</span>
-  <span class="example-spacer"></span>
-    <button mat-button color="primary" class="btn-navbar">Recipes</button>
-    <button mat-button color="primary" class="btn-navbar">Login</button>
-</mat-toolbar>
-
-<div class="wrapper">
-
-  <div class="sidebar">
-    <img src="assets/images/home2.jpg">
-  </div>
-
+<div class="container">
   <div>
-    <input type="text">
-
-    <button routerLink="/#"><img src="assets/images/button-add-recipe.png">Ajouter Recette</button>
-    <button routerLink="/#"><img src="assets/images/button-livre.png">Voir les recettes</button>
+    <img src="assets/images/home2.jpg" width="445">
   </div>
-
+    <mat-toolbar class="nav">
+      <span class="title">The Cookbook</span>
+      <span class="example-spacer"></span>
+      <button mat-button color="primary" class="btn-navbar">Recipes</button>
+      <button mat-button color="primary" class="btn-navbar">Login</button>
+    </mat-toolbar>
+  <div class="main">
+    <input type="text" placeholder="Search">
+  </div>
 </div>
+
+
+
+
+
+  <!-- <div class="wrapper">
+    <div>
+      <img src="assets/images/button-add-recipe.png" routerLink="/#" class="image-home">
+      <p>Add recipe</p>
+    </div>
+    <div>
+      <img src="assets/images/button-livre.jpg" routerLink="/#" class="image-home">
+      <p>See recipes</p>
+    </div>
+  </div> -->
+
+

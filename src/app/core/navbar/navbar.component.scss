@@ -1,11 +1,8 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-span{
-  font-size: 35px;
-  color: #e49201;
-}
 .btn-navbar {
+  font-size: medium;
   border: 2px solid #e49201;
   padding: 10px 15px 10px 15px;
   margin: 5px;
@@ -14,21 +11,45 @@ span{
   color: #e49201;
 }
 .btn-navbar:hover {
-  transform: translateY(-3px);
-}
-.btn-navbar:active {
+  font-size: medium;
+  transform: translateY(-2px);
   background-color: #e49201;
   color: #52263f;
 }
-
-.navbar {
+.btn-navbar:active {
+  font-size: medium;
+  background-color: #e49201;
+  color: #52263f;
+}
+.container {
+  display:flex;
   background-color: #52263f;
 }
-.sidebar img{
-  width: 74%;
+.nav {
+  background-color: #52263f;
+  height: 125px;
 }
-.wrapper {
+.title {
+  font-size: 70px;
+  color: #C28593;
+}
+.main {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 58%;
 }
+
+
+
+
+// .wrapper {
+//   color: #C28593;
+// }
+// .image-home {
+//   width: 200px;
+//   border-radius: 10px;
+// }
+
