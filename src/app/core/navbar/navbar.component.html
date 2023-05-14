@@ -5,16 +5,16 @@
     <mat-toolbar class="nav">
       <span class="title">The Cookbook</span>
       <span class="example-spacer"></span>
-      <button mat-button color="primary" class="btn-navbar">Recipes</button>
-      <button mat-button color="primary" class="btn-navbar">Login</button>
+      <button mat-button color="primary" class="btn-navbar" routerLink="/allRecipes">Recipes</button>
+      <button mat-button color="primary" class="btn-navbar" routerLink="/login">Login</button>
     </mat-toolbar>
   <div class="main">
     <input type="text" placeholder="Search">
   </div>
   <div class="main2">
-      <img src="assets/images/button-add-recipe.png" routerLink="/#" class="image-home">
-      <p class="title-btn">Add Recipe</p>
-      <img src="assets/images/button-livre.jpg" routerLink="/#" class="image-home">
-      <p class="title-btn2">See Recipes</p>
+      <img src="assets/images/button-add-recipe.png" routerLink="/createRecipe" class="image-home">
+      <p class="title-btn" routerLink="/createRecipe">Add Recipe</p>
+      <img src="assets/images/button-livre.jpg" routerLink="/allRecipes" class="image-home">
+      <p class="title-btn2" routerLink="/allRecipes">See Recipes</p>
   </div>
 </div>

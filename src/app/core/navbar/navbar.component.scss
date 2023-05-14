@@ -2,6 +2,7 @@
   flex: 1 1 auto;
 }
 .btn-navbar {
+  cursor: pointer;
   font-size: medium;
   border: 2px solid #e49201;
   padding: 10px 15px 10px 15px;
@@ -12,7 +13,6 @@
 }
 .btn-navbar:hover {
   font-size: medium;
-  transform: translateY(-2px);
   background-color: #e49201;
   color: #52263f;
 }
@@ -60,12 +60,21 @@ input {
   top: 50%;
   left: 44%;
 }
+.image-home:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
 .image-home {
+  transition: transform 0.2s ease-in-out,
+  background-color 0.2s ease-in-out;
+  cursor: pointer;
   width: 220px;
   margin: 25px;
   border-radius: 35px;
 }
 .title-btn {
+  cursor: pointer;
   color: #C28593;
   font-size: 30px;
   display: flex;
@@ -76,6 +85,7 @@ input {
   left: 11%;
 }
 .title-btn2 {
+  cursor: pointer;
   color: #C28593;
   font-size: 30px;
   display: flex;

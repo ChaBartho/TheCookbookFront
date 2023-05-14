@@ -6,27 +6,37 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
-import { RecipeComponent } from './features/recipe/recipe.component';
+import { CreateRecipeComponent } from './features/recipe/create-recipe/create-recipe.component';
+import { AllRecipesComponent } from './features/recipe/all-recipes/all-recipes.component';
+import { EditRecipeComponent } from './features/recipe/edit-recipe/edit-recipe.component';
+import { OneRecipeComponent } from './features/recipe/one-recipe/one-recipe.component';
+
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthComponent } from './core/auth/auth.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeComponent,
     ShoppingListComponent,
     NavbarComponent,
-    AuthComponent
+    AuthComponent,
+    CreateRecipeComponent,
+    AllRecipesComponent,
+    EditRecipeComponent,
+    OneRecipeComponent,
+    EditShoppingListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule
   ],
