@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
-import { HomeComponent } from './features/home/home.component';
 import { RecipeComponent } from './features/recipe/recipe.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthComponent } from './core/auth/auth.component';
@@ -18,7 +17,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     RecipeComponent,
     ShoppingListComponent,
     NavbarComponent,

@@ -6,13 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class IngredientService {
 
-  constructor(private _httpClient : HttpClient) { }
+  constructor() { }
 
-  addIngredient(){}
-  getOneIngredient(){}
-  getAllIngredient(){}
-  deleteIngredient(){}
-  updateIngredient(){}
-  clear(){}
 
 }
