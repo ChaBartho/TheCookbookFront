@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class AlimentService {
 
-  constructor(private _httpClient : HttpClient) { }
+  constructor(private _http : HttpClient) { }
 
 
   getAllAliment() : Observable<Aliment>{
-    return this._httpClient.get<Aliment>("http://localhost:8080/aliment/")
+    return this._http.get<Aliment>("http://localhost:8080/aliment")
   }
 
 

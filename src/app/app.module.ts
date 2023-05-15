@@ -3,20 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
 import { CreateRecipeComponent } from './features/recipe/create-recipe/create-recipe.component';
 import { AllRecipesComponent } from './features/recipe/all-recipes/all-recipes.component';
 import { EditRecipeComponent } from './features/recipe/edit-recipe/edit-recipe.component';
 import { OneRecipeComponent } from './features/recipe/one-recipe/one-recipe.component';
-
+import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthComponent } from './core/auth/auth.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -35,10 +37,14 @@ import { EditShoppingListComponent } from './features/shopping-list/edit-shoppin
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

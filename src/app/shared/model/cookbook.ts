@@ -1,6 +1,8 @@
 export interface Recipe {
   name: string;
   instruction: string;
+  tempsCuisson : string;
+  quantity: number;
   Ingredient: []
 }
 

@@ -11,11 +11,11 @@ import { AuthComponent } from './core/auth/auth.component';
 
 const routes: Routes = [
   {path: '', component: NavbarComponent},
-  {path: 'allRecipes', component: AllRecipesComponent, children : [
-    {path: ':id', component: OneRecipeComponent},
-    {path: 'edit-recipe', component: EditRecipeComponent},
-    {path: 'create-recipe', component: CreateRecipeComponent}
-  ]},
+  {path: 'all-recipes', component: AllRecipesComponent},
+  {path: 'create-recipe', component: CreateRecipeComponent},
+  {path: ':id', component: OneRecipeComponent},
+  {path: ':id/edit', component: EditRecipeComponent},
+
   {path: 'shopping-list', component: ShoppingListComponent, children : [
     {path: 'edit-shopping-list', component: EditShoppingListComponent}
   ]},
