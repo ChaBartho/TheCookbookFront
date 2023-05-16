@@ -1,6 +1,6 @@
 img {
   width: auto;
-  height: 86vh;
+  height: 86.5vh;
 }
 .main {
   display: flex;
@@ -26,6 +26,7 @@ input {
 }
 .buttoncontainer {
   display: flex;
+  margin-top: 40px;
 }
 .image-home:hover {
   transform: scale(1.05);
@@ -45,7 +46,7 @@ input {
   color: #C28593;
   font-size: 30px;
 }
-.voila {
+.buttoncontainer2 {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -4,20 +4,28 @@
     <div>
       <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
         <div class="form-group-titre">
-          <input type="text" placeholder="Nom de la recette" id="name" formControlName="name">
+          <input type="text" placeholder="Nom de la recette" id="name" formControlName="name" class="inputtitre">
         </div>
+
         <div class="container">
+
           <div class="part1">
             <div class="form-group-ingredient">
               <label for="ingredient">Ingredients:</label>
-              <input type="number" id="quantity" formControlName="quantity">
-              <input type="text" id="ingredient" formArrayName="ingredient">
+              <div>
+                <input type="number" id="quantity" formControlName="quantity" class="inputquantity">
+                <input type="text" id="ingredient" formArrayName="ingredient" class="inputingredient">
+              </div>
+
             </div>
             <div class="form-group-cuisson">
               <label for="tempsCuisson">Temps de cuisson:</label>
-              <input type="text" id="tempsCuisson" formControlName="tempsCuisson" placeholder="20min à 180°">
+              <div>
+                <input type="text" id="tempsCuisson" formControlName="tempsCuisson" placeholder="20min à 180°" class="inputcuisson">
+              </div>
             </div>
           </div>
+
           <div class="part2">
             <div class="form-group-instruction">
               <label for="instruction">Instructions:</label>
@@ -25,7 +33,9 @@
             </div>
             <button type="submit" class="btn">Enregistrer</button>
           </div>
+
         </div>
+
       </form>
     </div>
   </div>
