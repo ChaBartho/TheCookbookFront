@@ -1,27 +1,32 @@
-<a routerLink="../">Retour</a>
-
-<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-
-  <div class="form-group">
-    <input type="text" placeholder="Nom de la recette" id="name" class="form-control" formControlName="name">
+<div class="main">
+<img src="assets/images/add-recipe.jpg" alt="clafoutis">
+  <div class="meta">
+    <div>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group-titre">
+          <input type="text" placeholder="Nom de la recette" id="name" formControlName="name">
+        </div>
+        <div class="container">
+          <div class="part1">
+            <div class="form-group-ingredient">
+              <label for="ingredient">Ingredients:</label>
+              <input type="number" id="quantity" formControlName="quantity">
+              <input type="text" id="ingredient" formArrayName="ingredient">
+            </div>
+            <div class="form-group-cuisson">
+              <label for="tempsCuisson">Temps de cuisson:</label>
+              <input type="text" id="tempsCuisson" formControlName="tempsCuisson" placeholder="20min à 180°">
+            </div>
+          </div>
+          <div class="part2">
+            <div class="form-group-instruction">
+              <label for="instruction">Instructions:</label>
+              <textarea id="instruction" formControlName="instruction"></textarea>
+            </div>
+            <button type="submit" class="btn">Enregistrer</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="ingredient">Ingredients:</label>
-    <input type="number" id="quantity" class="form-control" formControlName="quantity">
-    <input type="text" id="ingredient" class="form-control" formArrayName="ingredient">
-  </div>
-
-  <div class="form-group">
-    <label for="instruction">Instructions:</label>
-    <textarea id="instruction" class="form-control" formControlName="instruction"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="tempsCuisson">Temps de cuisson:</label>
-    <input type="text" id="tempsCuisson" class="form-control" formControlName="tempsCuisson" placeholder="20min à 180°">
-  </div>
-
-  <button type="submit" >Enregistrer</button>
-
-</form>
+</div>

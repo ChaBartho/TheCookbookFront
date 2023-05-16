@@ -18,6 +18,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { HomeComponent } from './features/home/home.component';
 
 
 
@@ -32,7 +33,8 @@ import {MatSelectModule} from '@angular/material/select';
     AllRecipesComponent,
     EditRecipeComponent,
     OneRecipeComponent,
-    EditShoppingListComponent
+    EditShoppingListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,6 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule
