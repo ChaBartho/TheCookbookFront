@@ -1,29 +1,33 @@
 export interface Recipe {
+  id: number;
   name: string;
   instruction: string;
   tempsCuisson : string;
-  quantity: number;
-  Ingredient: []
+  Ingredient: [];
 }
 
 export interface Ingredient {
-  name: string;
+  id: number;
   quantity: number;
-  uniteMesure: string
+  uniteMesure: string;
+  alimentId: number;
 }
 
 export interface Aliment {
-  name: string
+  id: number;
+  name: string;
 }
 
 export interface Shoppinglist {
+  id: number;
   Aliment: [];
   quantity: number;
   creationDate: string
 }
 
 export interface User {
+  id: number;
   username : string;
   email: string;
-  password: string
+  password: string;
 }

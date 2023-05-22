@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { Recipe } from '../model/cookbook';
+import { Ingredient, Recipe } from '../model/cookbook';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class RecipeService {
     return this._http.post<Recipe>(`${this.apiUrl}/add`, recipe);
   }
 
-  getRecipe(id: number): Observable<Recipe> {
+  getOneRecipe(id: number): Observable<Recipe> {
     return this._http.get<Recipe>(`${this.apiUrl}/${id}`);
   }
 
@@ -25,7 +25,7 @@ export class RecipeService {
   }
 
   deleteRecipe(id: number): Observable<any> {
-    return this._http.delete(`${this.apiUrl}/${id}/delete`);
+    return this._http.delete(`${this.apiUrl}/delete/${id}`);
   }
 
   updateRecipe(id: number, recipe: Recipe): Observable<any> {
@@ -37,4 +37,10 @@ export class RecipeService {
   }
 
 
+
+
+
+  getIngredientsByRecipe(id: number): Observable<Ingredient[]> {
+    return this._http.get<Ingredient[]>(`${this.apiUrl}/${id}/ingredients`);
+  }
 }

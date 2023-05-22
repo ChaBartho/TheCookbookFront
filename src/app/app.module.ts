@@ -19,6 +19,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { HomeComponent } from './features/home/home.component';
+import { SearchRecipeComponent } from './features/recipe/search-recipe/search-recipe.component';
 
 
 
@@ -34,7 +35,8 @@ import { HomeComponent } from './features/home/home.component';
     EditRecipeComponent,
     OneRecipeComponent,
     EditShoppingListComponent,
-    HomeComponent
+    HomeComponent,
+    SearchRecipeComponent
   ],
   imports: [
     BrowserModule,

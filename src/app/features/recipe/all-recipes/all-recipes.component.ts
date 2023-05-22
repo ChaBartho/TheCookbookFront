@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
 import { Recipe } from 'src/app/shared/model/cookbook';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 
@@ -9,28 +8,18 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
   styleUrls: ['./all-recipes.component.scss']
 })
 export class AllRecipesComponent implements OnInit{
-
   recipes! : Recipe[]
 
   constructor(private _recipeService : RecipeService) {}
 
-  ngOnInit(): void {
-
-    const observer: Observer<Recipe[]> = {
-      next: (recipes: Recipe[]) => {
-        this.recipes = recipes;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('Observable completed');
-      }
-    };
-
-    this._recipeService.getAllRecipes().subscribe(observer);
+  ngOnInit(){
+    this.getAll();
   }
 
-
+  getAll() {
+    this._recipeService.getAllRecipes().subscribe((allRecipes : Recipe[]) => {
+      this.recipes = allRecipes
+    });
+  }
 
 }

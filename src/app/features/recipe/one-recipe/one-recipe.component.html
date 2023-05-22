@@ -1,1 +1,12 @@
-<p>one-recipe works!</p>
+
+<div>
+  <h2>{{ recipe.name }}</h2>
+  <p>{{ recipe.instruction }}</p>
+  <p>{{ recipe.tempsCuisson }}</p>
+  <ul>
+    <li *ngFor="let ingredient of ingredients">
+      {{ ingredient.quantity }} {{ ingredient.uniteMesure }} : <!--{{ aliments.name }} -->
+    </li>
+  </ul>
+</div>
+

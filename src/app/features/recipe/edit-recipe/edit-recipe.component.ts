@@ -11,12 +11,12 @@ export class EditRecipeComponent implements OnInit{
 
   constructor(private route: ActivatedRoute){}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params
     .subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-    }
+        this.id = +params['id']; //retrieve id  + -> convert into number
+      }
     );
   }
 

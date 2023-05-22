@@ -1,2 +1,9 @@
-<p>all-recipes works!</p>
 
+<h2>Toutes mes recettes :</h2>
+
+<ul>
+  <li *ngFor="let recipe of recipes">
+    <p>{{ recipe.name }}</p>
+    <button [routerLink]="['/one-recipe', recipe.id]">Voir recette</button>
+  </li>
+</ul>
