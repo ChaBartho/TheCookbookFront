@@ -36,13 +36,4 @@ export class IngredientService {
     return this._http.delete<Ingredient[]>(`${this.apiUrl}`)
   }
 
-
-
-
-
-  getAlimentByIngredients(id: number): Observable<Aliment[]>{
-    return this._http.get<Aliment[]>(`${this.apiUrl}/${id}/aliments`);
-  }
-
-
 }

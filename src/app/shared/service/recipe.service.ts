@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Ingredient, Recipe } from '../model/cookbook';
 
 @Injectable({
@@ -37,10 +37,9 @@ export class RecipeService {
   }
 
 
-
-
-
   getIngredientsByRecipe(id: number): Observable<Ingredient[]> {
     return this._http.get<Ingredient[]>(`${this.apiUrl}/${id}/ingredients`);
   }
+
+
 }

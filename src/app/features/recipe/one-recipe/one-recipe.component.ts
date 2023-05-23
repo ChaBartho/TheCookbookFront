@@ -1,8 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Aliment, Ingredient, Recipe } from 'src/app/shared/model/cookbook';
-import { IngredientService } from 'src/app/shared/service/ingredient.service';
+import { AlimentService } from 'src/app/shared/service/aliment.service';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 
 @Component({
@@ -15,17 +14,18 @@ export class OneRecipeComponent implements OnInit{
   id! : number;
   recipe! : Recipe;
   ingredients! : Ingredient[];
-  aliments! : Aliment[];
 
-  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService, private _ingredientService : IngredientService){}
+
+  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService){}
 
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
-    this.getOne(this.id);
+    this.getOneRecipe(this.id);
     this.getIngredients(this.id);
+
   }
 
-  getOne(id : number){
+  getOneRecipe(id : number){
     this._recipeService.getOneRecipe(id).subscribe(
       recipe => {
         this.recipe = recipe;
@@ -39,15 +39,8 @@ export class OneRecipeComponent implements OnInit{
   getIngredients(id: number) {
     this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {
     this.ingredients = ingredients;
+    })
 
-    this._ingredientService.getAlimentByIngredients(id).subscribe((aliments: Aliment[]) => {
-      this.aliments = aliments;
-    })})
 
   }
-
-
-
-
-
 }

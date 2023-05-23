@@ -36,4 +36,7 @@ export class AlimentService {
     return this._http.delete<Aliment[]>(`${this.apiUrl}`)
   }
 
+
+
+
 }

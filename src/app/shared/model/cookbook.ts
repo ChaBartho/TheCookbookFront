@@ -3,20 +3,25 @@ export interface Recipe {
   name: string;
   instruction: string;
   tempsCuisson : string;
-  Ingredient: [];
+  Ingredient: Ingredient[];
 }
 
 export interface Ingredient {
   id: number;
   quantity: number;
   uniteMesure: string;
-  alimentId: number;
+  aliment: Aliment;
 }
 
 export interface Aliment {
   id: number;
   name: string;
 }
+
+
+
+
+
 
 export interface Shoppinglist {
   id: number;
