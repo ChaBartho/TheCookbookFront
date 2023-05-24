@@ -15,31 +15,27 @@ export class RecipeService {
   addRecipe(recipe: Recipe): Observable<Recipe> {
     return this._http.post<Recipe>(`${this.apiUrl}/add`, recipe);
   }
-
   getOneRecipe(id: number): Observable<Recipe> {
     return this._http.get<Recipe>(`${this.apiUrl}/${id}`);
   }
-
   getAllRecipes(): Observable<Recipe[]> {
     return this._http.get<Recipe[]>(`${this.apiUrl}/all`);
   }
-
   deleteRecipe(id: number): Observable<any> {
-    return this._http.delete(`${this.apiUrl}/delete/${id}`);
+    return this._http.delete(`${this.apiUrl}/${id}/delete`);
   }
-
   updateRecipe(id: number, recipe: Recipe): Observable<any> {
     return this._http.patch(`${this.apiUrl}/${id}/update`, recipe);
   }
-
   clearRecipes(): Observable<Recipe[]> {
     return this._http.delete<Recipe[]>(`${this.apiUrl}`)
   }
 
-
   getIngredientsByRecipe(id: number): Observable<Ingredient[]> {
     return this._http.get<Ingredient[]>(`${this.apiUrl}/${id}/ingredients`);
   }
-
+  searchRecipeByName(name: string): Observable <Recipe>{
+    return this._http.get<Recipe>(`${this.apiUrl}/name/${name}`)
+  }
 
 }

@@ -1,11 +1,12 @@
-
 <div>
+  <button (click)="goBack()">Retour</button>
+
   <h2>{{ recipe.name }}</h2>
   <p>{{ recipe.instruction }}</p>
   <p>{{ recipe.tempsCuisson }}</p>
   <ul>
     <li *ngFor="let ingredient of ingredients">
-       {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  <!--{{ ingredient.aliment.name }}-->
+       {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
     </li>
   </ul>
 </div>

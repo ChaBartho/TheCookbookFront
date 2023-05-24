@@ -10,7 +10,7 @@ export interface Ingredient {
   id: number;
   quantity: number;
   uniteMesure: string;
-  aliment: Aliment;
+  name: string;
 }
 
 export interface Aliment {

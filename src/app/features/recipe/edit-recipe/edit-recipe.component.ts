@@ -6,18 +6,6 @@ import { ActivatedRoute, Params } from '@angular/router';
   templateUrl: './edit-recipe.component.html',
   styleUrls: ['./edit-recipe.component.scss']
 })
-export class EditRecipeComponent implements OnInit{
-  id!: number;
-
-  constructor(private route: ActivatedRoute){}
-
-  ngOnInit() {
-    this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.id = +params['id']; //retrieve id  + -> convert into number
-      }
-    );
-  }
+export class EditRecipeComponent {
 
 }

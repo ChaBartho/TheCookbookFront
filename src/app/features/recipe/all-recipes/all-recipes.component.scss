@@ -1,0 +1,36 @@
+img {
+  width: auto;
+  height: 86.1vh;
+}
+.main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #52263f;
+}
+.meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+input {
+  font-size: 15px;
+  width: 60%;
+  height: 25px;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+h2{
+  font-size: 35px;
+  color: #C28593;
+}
+p, ul, li {
+  color: #C28593;
+}
+ul, li {
+  list-style-type: none;
+}
+.btn-retour {
+
+}

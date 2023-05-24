@@ -1,21 +1,27 @@
 <div class="main">
-  <img src="assets/images/home.jpg" alt="pancakes">
+  <img src="assets/images/home.jpg">
   <div class="meta">
+
     <div>
       <div class="meta">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" [(ngModel)]="name" (keydown.enter)="searchRecipe()">
       </div>
-      <div class="buttoncontainer">
-        <div class="buttoncontainer2">
-          <img src="assets/images/button-add-recipe.png" routerLink="/create-recipe" class="image-home">
-          <p class="title-btn" routerLink="/create-recipe">Add Recipe</p>
+
+      <app-search-recipe *ngIf="result"[result]="result"></app-search-recipe>
+
+        <div class="buttoncontainer">
+          <div class="buttoncontainer2">
+            <img src="assets/images/button-add-recipe.png" routerLink="/create-recipe" class="image-home">
+            <p class="title-btn" routerLink="/create-recipe">Add Recipe</p>
+          </div>
+          <div class="buttoncontainer2">
+            <img src="assets/images/button-livre.jpg" routerLink="/all-recipes" class="image-home">
+            <p class="title-btn" routerLink="/all-recipes">See Recipes</p>
+          </div>
         </div>
-        <div class="buttoncontainer2">
-          <img src="assets/images/button-livre.jpg" routerLink="/all-recipes" class="image-home">
-          <p class="title-btn" routerLink="/all-recipes">See Recipes</p>
-        </div>
-      </div>
     </div>
+
+
   </div>
 </div>
 

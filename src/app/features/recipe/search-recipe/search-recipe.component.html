@@ -1,1 +1,10 @@
-<p>search-recipe works!</p>
+<div>
+  <h2>{{ result.name }}</h2>
+  <p>{{ result.instruction }}</p>
+  <p>{{ result.tempsCuisson }}</p>
+  <ul>
+    <li *ngFor="let ingredient of ingredients">
+       {{ ingredient.quantity }}{{ ingredient.uniteMesure }} {{ ingredient.name }}
+    </li>
+  </ul>
+</div>

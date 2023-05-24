@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Aliment, Ingredient, Recipe } from 'src/app/shared/model/cookbook';
-import { AlimentService } from 'src/app/shared/service/aliment.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Ingredient, Recipe } from 'src/app/shared/model/cookbook';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 
 @Component({
@@ -10,19 +9,16 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
   styleUrls: ['./one-recipe.component.scss']
 })
 export class OneRecipeComponent implements OnInit{
-
   id! : number;
   recipe! : Recipe;
   ingredients! : Ingredient[];
 
-
-  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService){}
+  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService,  private router: Router){}
 
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
     this.getOneRecipe(this.id);
     this.getIngredients(this.id);
-
   }
 
   getOneRecipe(id : number){
@@ -40,7 +36,11 @@ export class OneRecipeComponent implements OnInit{
     this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {
     this.ingredients = ingredients;
     })
-
-
   }
+
+  goBack() {
+    this.router.navigate(['/all-recipes']);
+  }
+
+
 }
