@@ -1,15 +1,15 @@
 img {
   width: auto;
-  height: 86.1vh;
+  height: 86.45vh;
 }
 .main {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   background-color: #52263f;
 }
 .meta {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -22,8 +22,14 @@ input {
   border-radius: 5px;
 }
 h2{
-  font-size: 35px;
+  font-size: 40px;
   color: #C28593;
+  border-top: 1px solid #e49201;
+  border-bottom: 1px solid #e49201;
+}
+.containe1{
+  display: flex;
+  align-items: center;
 }
 p, ul, li {
   color: #C28593;
@@ -31,6 +37,46 @@ p, ul, li {
 ul, li {
   list-style-type: none;
 }
-.btn-retour {
+.container-recipe{
+  position: relative;
+  display: inline-block;
+}
+.btn-delete{
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid gray;
+  background-color: transparent;
+  color: gray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0%, 0%);
+}
+.btn-delete:hover{
+  border: 2px solid #e49201;
+  background-color: #e49201;
+  color: #52263f;
+}
+.recipe {
+  cursor: pointer;
+  font-size: large;
+  border: 2px solid #e49201;
+  padding: 15px 20px 15px 20px;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #52263f;
+  color: #e49201;
+}
+.recipe:hover {
+  font-size: large;
+  background-color: #e49201;
+  color: #52263f;
+}
+.recipe:active {
+  font-size: large;
+  background-color: #e49201;
+  color: #52263f;
+}
+.popup {
 
 }

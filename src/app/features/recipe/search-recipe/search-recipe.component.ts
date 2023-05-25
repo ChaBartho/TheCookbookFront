@@ -18,10 +18,8 @@ export class SearchRecipeComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this._route.snapshot.params['id'];
-
     this.getIngredients(this.id);
   }
-
 
   getIngredients(id: number) {
     this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {

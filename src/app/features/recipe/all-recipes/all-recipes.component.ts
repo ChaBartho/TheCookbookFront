@@ -10,12 +10,11 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
 })
 export class AllRecipesComponent implements OnInit{
   index! : number;
-
   recipes : Recipe[] = [];
   result! : Recipe;
   name! : string;
 
-  constructor(private _recipeService : RecipeService,  private router: Router) {}
+  constructor(private _recipeService : RecipeService) {}
 
   ngOnInit(){
     this.getAll();
@@ -27,16 +26,6 @@ export class AllRecipesComponent implements OnInit{
     });
   }
 
-  searchRecipe(){
-    this._recipeService.searchRecipeByName(this.name).subscribe(
-      data => {
-        this.result = data
-      },
-      error => {
-        console.log(error);
-    })
-  }
-
   deleteRecipe(id: number){
     this._recipeService.deleteRecipe(id).subscribe(() => {
       this.recipes.findIndex(recipe => recipe.id === id);
@@ -44,8 +33,14 @@ export class AllRecipesComponent implements OnInit{
     });
    }
 
-   goBack() {
-    this.router.navigate(['']);
+   searchRecipe(){
+    this._recipeService.searchRecipeByName(this.name).subscribe(
+      data => {
+        this.result = data;
+      },
+      error => {
+        console.log(error);
+    })
   }
 
 

@@ -7,7 +7,7 @@
         <input type="text" placeholder="Search" [(ngModel)]="name" (keydown.enter)="searchRecipe()">
       </div>
 
-      <app-search-recipe *ngIf="result"[result]="result"></app-search-recipe>
+        <app-search-recipe *ngIf="result" [result]="result"></app-search-recipe>
 
         <div class="buttoncontainer">
           <div class="buttoncontainer2">

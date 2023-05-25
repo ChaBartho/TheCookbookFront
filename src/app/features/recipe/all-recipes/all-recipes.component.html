@@ -1,36 +1,27 @@
 <div class="main">
-  <img src="assets/images/recipes-list2.jpg">
-  <button class="btn-retour" (click)="goBack()">Retour</button>
+  <img src="assets/images/recipes-list2.jpg" alt="recipe-list">
   <div class="meta">
 
 
     <div>
-      <h2>Toutes mes recettes :</h2>
+        <div class="meta">
+          <h2>Toutes mes recettes :</h2>
+          <input type="text" placeholder="Tapez le nom de la recette" [(ngModel)]="name" (keydown.enter)="searchRecipe()">
+        </div>
 
-      <div class="meta">
-        <input type="text" placeholder="Tapez le nom de la recette" [(ngModel)]="name" (keydown.enter)="searchRecipe()">
-      </div>
+        <app-search-recipe *ngIf="result" [result]="result" class="popup"></app-search-recipe>
 
-        <app-search-recipe *ngIf="result" [result]="result"></app-search-recipe>
+        <br><br><br><br>
 
-
-
-      <div [hidden]="result">
-          <div *ngFor="let recipe of recipes">
-
-            <p>{{ recipe.name }}</p>
-            <button [routerLink]="['/one-recipe', recipe.id]">Voir</button>
-            <button (click)="deleteRecipe(recipe.id)">Supprimer</button>
-          </div>
-      </div>
-
-
+        <div [hidden]="result">
+            <div class="container-recipe" *ngFor="let recipe of recipes">
+              <button class="recipe" [routerLink]="['/one-recipe', recipe.id]">{{ recipe.name }}</button>
+              <button class="btn-delete" (click)="deleteRecipe(recipe.id)">X</button>
+            </div>
+        </div>
     </div>
+
 
 
   </div>
 </div>
-
-
-
-

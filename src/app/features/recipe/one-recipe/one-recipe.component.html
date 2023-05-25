@@ -1,13 +1,23 @@
-<div>
-  <button (click)="goBack()">Retour</button>
+<div class="main">
+  <img src="assets/images/sweet.jpg" alt="cookies">
+  <div class="meta">
 
-  <h2>{{ recipe.name }}</h2>
-  <p>{{ recipe.instruction }}</p>
-  <p>{{ recipe.tempsCuisson }}</p>
-  <ul>
-    <li *ngFor="let ingredient of ingredients">
-       {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
-    </li>
-  </ul>
+      <div>
+        <button class="btn-back" (click)="goBack()">Retour</button>
+
+        <h2>{{ recipe.name }}</h2>
+        <p>{{ recipe.instruction }}</p>
+        <p>{{ recipe.tempsCuisson }}</p>
+        <ul>
+          <li *ngFor="let ingredient of ingredients">
+            {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
+          </li>
+        </ul>
+
+        <button>Ajouter ingredients à ShoppingList</button>
+        <button>Modifier</button>
+        <button>Supprimer Recette</button>
+      </div>
+
+  </div>
 </div>
-
