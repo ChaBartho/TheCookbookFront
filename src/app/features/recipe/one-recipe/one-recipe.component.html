@@ -6,17 +6,24 @@
         <button class="btn-back" (click)="goBack()">Retour</button>
 
         <h2>{{ recipe.name }}</h2>
-        <p>{{ recipe.instruction }}</p>
+        <p class="title">Cuisson : </p>
         <p>{{ recipe.tempsCuisson }}</p>
+        <p class="title">Ingrédients : </p>
         <ul>
           <li *ngFor="let ingredient of ingredients">
             {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
           </li>
         </ul>
+        <p class="title"> Instructions : </p>
+        <p>{{ recipe.instruction }}</p>
 
-        <button>Ajouter ingredients à ShoppingList</button>
-        <button>Modifier</button>
-        <button>Supprimer Recette</button>
+
+        <div>
+          <button class="btn">Ajouter ingredients à ShoppingList</button>
+          <button class="btn">Modifier</button>
+          <button class="btn">Supprimer</button>
+        </div>
+
       </div>
 
   </div>

@@ -13,13 +13,17 @@ import { OneRecipeComponent } from './features/recipe/one-recipe/one-recipe.comp
 import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { AuthComponent } from './core/auth/auth.component';
+import { HomeComponent } from './features/home/home.component';
+import { SearchRecipeComponent } from './features/recipe/search-recipe/search-recipe.component';
+import { PopUpComponent } from './features/recipe/pop-up/pop-up.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { HomeComponent } from './features/home/home.component';
-import { SearchRecipeComponent } from './features/recipe/search-recipe/search-recipe.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -36,7 +40,8 @@ import { SearchRecipeComponent } from './features/recipe/search-recipe/search-re
     OneRecipeComponent,
     EditShoppingListComponent,
     HomeComponent,
-    SearchRecipeComponent
+    SearchRecipeComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,9 @@ import { SearchRecipeComponent } from './features/recipe/search-recipe/search-re
     BrowserAnimationsModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,30 @@
+h2{
+  font-size: 40px;
+  color: #C28593;
+  //border-top: 1px solid #e49201;
+  //border-bottom: 1px solid #e49201;
+}
+p, ul, li {
+  color: #C28593;
+}
+.modal {
+  background-color: #52263f;
+  padding: 20px;
+}
+.title {
+  color: #e49201;
+  font-size: 20px;
+  border-bottom: 1px solid #e49201;
+}
+.btn {
+  float: right;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: #52263f;
+  border: 1px solid #e49201;
+  color: #e49201;
+}
+.btn:hover{
+  background-color: #e49201;
+  color: #52263f;
+}

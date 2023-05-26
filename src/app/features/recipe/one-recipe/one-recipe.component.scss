@@ -17,13 +17,12 @@ img {
 h2{
   font-size: 40px;
   color: #C28593;
-  border-top: 1px solid #e49201;
-  border-bottom: 1px solid #e49201;
 }
 p, ul, li {
   color: #C28593;
 }
 .btn-back {
+  float: right;
   cursor: pointer;
   border: 2px solid #e49201;
   border-radius: 30px;
@@ -32,6 +31,29 @@ p, ul, li {
   color: #e49201;
 }
 .btn-back:hover {
+  background-color: #e49201;
+  color: #52263f;
+}
+.title {
+  color: #e49201;
+  font-size: 25px;
+  border-bottom: 1px solid #e49201;
+}
+
+
+.btn {
+  font-size: 15px;
+  float: right;
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 10px 15px 10px 15px;
+  margin:15px;
+  background-color: #52263f;
+  border: 2px solid #e49201;
+  color: #e49201;
+}
+.btn:hover{
+  font-size: 15px;
   background-color: #e49201;
   color: #52263f;
 }

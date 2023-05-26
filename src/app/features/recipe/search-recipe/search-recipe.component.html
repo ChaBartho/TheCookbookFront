@@ -1,11 +1,16 @@
-<div>
+<div class="modal">
+  <button class="btn" (click)="closeModal()">Fermer</button>
+
   <h2>{{ result.name }}</h2>
-  <p>{{ result.instruction }}</p>
+  <p class="title">Cuisson : </p>
   <p>{{ result.tempsCuisson }}</p>
+  <p class="title">Ingrédients : </p>
   <ul>
     <li *ngFor="let ingredient of ingredients">
        {{ ingredient.quantity }}{{ ingredient.uniteMesure }} {{ ingredient.name }}
     </li>
   </ul>
-</div>
+  <p class="title"> Instructions : </p>
+  <p>{{ result.instruction }}</p>
 
+</div>

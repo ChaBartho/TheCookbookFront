@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Ingredient, Recipe } from 'src/app/shared/model/cookbook';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search-recipe',
@@ -11,12 +12,18 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
 export class SearchRecipeComponent implements OnInit{
   id! : number;
   ingredients! : Ingredient[];
+  result! : Recipe;
 
-  @Input() result!: Recipe;
+  //@Input() result!: Recipe;
 
-  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { result: Recipe },
+  private _route : ActivatedRoute, private _recipeService : RecipeService,
+  public dialogRef: MatDialogRef<SearchRecipeComponent>) {
+    this.result = data.result;
+    this.getIngredients(this.result.id);
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.id = this._route.snapshot.params['id'];
     this.getIngredients(this.id);
   }
@@ -27,7 +34,7 @@ export class SearchRecipeComponent implements OnInit{
     })
   }
 
-
-
-
+  closeModal(): void{
+    this.dialogRef.close();
+  }
 }
