@@ -36,4 +36,9 @@ export class IngredientService {
     return this._http.delete<Ingredient[]>(`${this.apiUrl}`)
   }
 
+
+  searchIngredientByName(name: string): Observable<Ingredient>{
+    return this._http.get<Ingredient>(`${this.apiUrl}/name/${name}`)
+  }
+
 }

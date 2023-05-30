@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShoppingListComponent } from './features/shopping-list/shopping-list.component';
 import { CreateRecipeComponent } from './features/recipe/create-recipe/create-recipe.component';
 import { AllRecipesComponent } from './features/recipe/all-recipes/all-recipes.component';
-import { EditRecipeComponent } from './features/recipe/edit-recipe/edit-recipe.component';
 import { OneRecipeComponent } from './features/recipe/one-recipe/one-recipe.component';
 import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
@@ -24,10 +23,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +31,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AuthComponent,
     CreateRecipeComponent,
     AllRecipesComponent,
-    EditRecipeComponent,
     OneRecipeComponent,
     EditShoppingListComponent,
     HomeComponent,

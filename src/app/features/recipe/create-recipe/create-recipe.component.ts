@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { Form, FormArray, FormControl } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { Aliment } from 'src/app/shared/model/cookbook';
+import { AlimentService } from 'src/app/shared/service/aliment.service';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 
 @Component({
@@ -8,46 +11,89 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
   templateUrl: './create-recipe.component.html',
   styleUrls: ['./create-recipe.component.scss']
 })
-export class CreateRecipeComponent{
+export class CreateRecipeComponent implements OnInit{
 
-  recipeIngredients = new FormArray([]);
-  message : string = '';
+  recipeForm! : FormGroup;
+  name! : string;
 
-  constructor(private _formBuilder : FormBuilder, private _recipeService : RecipeService){}
+  constructor(private _recipeService : RecipeService, private _alimentService : AlimentService, private route: ActivatedRoute, private router: Router){}
 
-  recipeForm : FormGroup = this._formBuilder.group({
-      name: ['', [Validators.required]],
-      instruction: ['', [Validators.required]],
-      tempsCuisson: ['', [Validators.required]],
-      ingredients: this._formBuilder.array([])
-    });
-
-
-  onSubmit() {
-    this._recipeService.addRecipe(this.recipeForm.value).subscribe();
-    this.message = 'Recette bien ajoutée !';
-    this.recipeForm.reset();
+  ngOnInit() {
+    this.initForm();
   }
 
 
-
-
-  deleteIngredient(index: number){
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  onSubmit(){
+    this._recipeService.addRecipe(this.recipeForm.value).subscribe(() => {
+      this.recipeForm.reset();
+      this.router.navigate(['/all-recipes']);
+    })
   }
 
   addIngredient(){
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        name: new FormControl('', Validators.required),
-        quantity: new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+        'name': new FormControl(null, Validators.required),
+        'uniteMesure': new FormControl(null, Validators.required),
+        'quantity': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
       })
     );
   }
 
-  get controls() {
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  deleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+
+  goBack() {
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
+
+  private initForm(){
+    let recipeName = '';
+    let recipeTempsCuisson = '';
+    let recipeInstruction = '';
+
+    let recipeIngredients = new FormArray([
+      new FormGroup({
+        'name': new FormControl(null, Validators.required),
+        'uniteMesure': new FormControl(null, Validators.required),
+        'quantity': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
+        'alimentId': new FormControl(null)
+      })
+    ]);
+
+    recipeIngredients.valueChanges.subscribe((ingredients: any[]) => {
+      ingredients.forEach((ingredient: any) => {
+        const name = ingredient.name;
+        this._alimentService.searchAlimentByName(name).subscribe((aliment: Aliment) => {
+          recipeIngredients.controls.forEach((control: FormGroup) => {
+            if (control.get('name')?.value === name) {
+              control.patchValue({
+                alimentId: aliment.id
+              });
+            }
+          });
+        });
+      });
+    });
+
+
+
+    this.recipeForm = new FormGroup({
+      'name': new FormControl(recipeName, Validators.required),
+      'tempsCuisson': new FormControl(recipeTempsCuisson, Validators.required),
+      'instruction': new FormControl(recipeInstruction, Validators.required),
+      'ingredients': recipeIngredients
+    })
+  }
+
+  searchAliment(name: string): Observable<Aliment> {
+    return this._alimentService.searchAlimentByName(name);
   }
 
 
+
+  get controls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  }
 }

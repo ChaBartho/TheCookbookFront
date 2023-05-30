@@ -37,6 +37,11 @@ export class AlimentService {
   }
 
 
+  searchAlimentByName(name: string): Observable<Aliment>{
+    return this._http.get<Aliment>(`${this.apiUrl}/name/${name}`)
+  }
+
+
 
 
 }
