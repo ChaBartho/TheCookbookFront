@@ -56,6 +56,7 @@ export class OneRecipeComponent implements OnInit{
       this.index = this.recipes.findIndex(recipe => recipe.id === id);
       this.recipes.splice(this.index, 1);
       this.notif.openSnackBar("Recette bien supprimée");
+      this.router.navigate(['/all-recipes']);
     });
    }
 

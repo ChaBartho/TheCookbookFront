@@ -4,7 +4,6 @@
 
       <div>
         <button class="btn-back" (click)="goBack()">Retour</button>
-
         <h2>{{ recipe.name }}</h2>
         <p class="title">Cuisson : </p>
         <p>{{ recipe.tempsCuisson }}</p>
@@ -18,10 +17,11 @@
         <p>{{ recipe.instruction }}</p>
 
         <div>
-          <button class="btn">Ajouter ingredients à ShoppingList</button>
+          <button class="btn">Ajouter à ShoppingList</button>
           <button class="btn">Modifier</button>
           <button class="btn" (click)="onDelete(recipe.id)">Supprimer</button>
         </div>
       </div>
+
   </div>
 </div>

@@ -10,23 +10,66 @@ img {
 .meta {
   display: flex;
   flex-direction: column;
-  //justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   width: 100%;
 }
 .wrap {
   flex-wrap: wrap;
 }
-input, textarea {
-  margin: 8px;
+.title {
+  color: #e49201;
+  font-size: 25px;
+  border-bottom: 1px solid #e49201;
+}
+// h2 {
+//   font-size: 30px;
+//   color: #e49201;
+// }
+.container-form {
+  margin: 0% 20% 0% 20%;
+}
+input {
+  margin: 10px;
+  border-radius: 5px;
+  width: 35%;
+}
+textarea {
+  margin: 10px;
   border-radius: 5px;
 }
-.input-ingredient {
+.input-name{
+  display: flex;
+  justify-content: center;
+
+}
+.input-cuisson {
+
+}
+.input-quantity {
   width: 8%;
 }
-h2{
-  font-size: 40px;
-  color: #C28593;
+.input-uniteMesure {
+  width: 5%;
+}
+.select-aliment {
+  margin: 10px;
+}
+
+
+.btn-add {
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: left;
+  border: 2px solid #e49201;
+  border-radius: 30px;
+  padding: 5px 10px 5px 10px;
+  background-color: #52263f;
+  color: #e49201;
+}
+.btn-add:hover {
+  background-color: #e49201;
+  color: #52263f;
 }
 .btn-back {
   float: right;
@@ -41,24 +84,125 @@ h2{
   background-color: #e49201;
   color: #52263f;
 }
-.title {
-  color: #e49201;
-  font-size: 25px;
-  border-bottom: 1px solid #e49201;
-}
-.btn {
-  font-size: 15px;
+.btn-submit {
+  font-size: 20px;
   float: right;
   cursor: pointer;
   border-radius: 30px;
   padding: 10px 15px 10px 15px;
-  margin:15px;
+  margin: 10px;
   background-color: #52263f;
   border: 2px solid #e49201;
   color: #e49201;
 }
-.btn:hover{
-  font-size: 15px;
+.btn-submit:hover{
+  font-size: 20px;
   background-color: #e49201;
   color: #52263f;
 }
+.btn-delete{
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 8px;
+  background-color: #830b17;
+  border: 2px solid #830b17;
+  color: #e49201;
+}
+.btn-delete:hover {
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 8px;
+  background-color: #e49201;
+  border: 2px solid #e49201;
+  color: #830b17;
+}
+
+
+
+
+
+
+
+//Mouvement du text lors du click :
+.transition, .form-title .question label{
+  -moz-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -o-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  -webkit-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+  transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+}
+//Forme de l'input :
+.form-title {
+  position: relative;
+  display: inline-block;
+  max-width: 700px;
+  min-width: 500px;
+  box-sizing: border-box;
+  padding: 30px 25px;
+  background-color: #52263f;
+  border-radius: 40px;
+  margin: 40px 0;
+  left: 50%;
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+//Le texte de mon input :
+.form-title .question label {
+  transform-origin: left center;
+  color: #C28593;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  font-size: 25px;
+  box-sizing: border-box;
+  padding: 0px 22px;
+  display: block;
+  position: absolute;
+  margin-top: -43px;
+  z-index: 2;
+  pointer-events: none;
+}
+//Mon input :
+.form-title .question input[type="text"] {
+  color:#e49201;
+  appearance: none;
+  background-color: #52263f;
+  border: 2px solid #e49201;
+  line-height: 0;
+  font-size: 17px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 60px;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+//Lorsque je click pour écrire :
+.form-title .question input[type="text"]:focus {
+  outline: none;
+  background: #52263f;
+  color: #e49201;
+}
+//Lorsque j'écris :
+.form-title .question input[type="text"]:valid {
+  margin-top: 30px;
+}
+//Transformation du text lors du click:
+.form-title .question input[type="text"]:focus ~ label {
+  -moz-transform: translate(0, -35px);
+  -ms-transform: translate(0, -35px);
+  -webkit-transform: translate(0, -35px);
+  transform: translate(0, -50px);
+}
+
+// form .question input[type="text"]:valid ~ label {
+//   text-transform: uppercase;
+//   font-style: italic;
+//   -moz-transform: translate(5px, -35px) scale(0.6);
+//   -ms-transform: translate(5px, -35px) scale(0.6);
+//   -webkit-transform: translate(5px, -35px) scale(0.6);
+//   transform: translate(5px, -35px) scale(0.6);
+// }

@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Aliment } from '../model/cookbook';
 import { Observable} from 'rxjs';
-import { env } from 'src/env';
+//import { env } from 'src/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlimentService {
 
-  private apiUrl = `http://${env.apihost}:8080/aliment`;
+  private apiUrl = 'http://localhost:8080/aliment';
+  //private apiUrl = `http://${env.apihost}:8080/aliment`;
 
   constructor(private _http : HttpClient) { }
 

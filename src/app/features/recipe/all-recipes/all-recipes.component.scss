@@ -10,7 +10,6 @@ img {
 .meta {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -24,8 +23,6 @@ input {
 h2{
   font-size: 30px;
   color: #e49201;
-  //border-top: 1px solid #e49201;
-  //border-bottom: 1px solid #e49201;
 }
 .containe1{
   display: flex;
