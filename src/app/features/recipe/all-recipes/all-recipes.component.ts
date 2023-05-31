@@ -49,8 +49,6 @@ export class AllRecipesComponent implements OnInit{
     });
   }
 
-
-
   deleteRecipe(id: number){
     this._recipeService.deleteRecipe(id).subscribe(() => {
       this.index = this.recipes.findIndex(recipe => recipe.id === id);

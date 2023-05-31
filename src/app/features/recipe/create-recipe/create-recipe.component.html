@@ -1,83 +1,32 @@
-<!-- <div class="main">
-<img src="assets/images/add-recipe.jpg">
-  <div class="meta">
-    <div>
-      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-        <div class="form-group-titre">
-          <input type="text" placeholder="Nom de la recette" formControlName="name">
-        </div>
-        <div class="container">
-          <div class="part1">
-            <div class="form-group-ingredient" formArrayName="ingredients">
-              <label for="ingredient">Ingredients:</label>
-                  <div *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
-                    <div>
-                      <input type="number" formControlName="quantity">
-                    </div>
-                    <div>
-                      <input type="text" formControlName="name">
-                    </div>
-                    <div>
-                      <button (click)="deleteIngredient(i)">X</button>
-                    </div>
-                  </div>
-                  <div>
-                    <button (click)="addIngredient()">V</button>
-                  </div>
-            </div>
-            <div class="form-group-cuisson">
-              <label for="tempsCuisson">Temps de cuisson:</label>
-              <div>
-                <input type="text" formControlName="tempsCuisson" placeholder="20min à 180°">
-              </div>
-            </div>
-          </div>
-          <div class="part2">
-            <div class="form-group-instruction">
-              <label for="instruction">Instructions:</label>
-              <textarea formControlName="instruction" rows="20" cols="55"></textarea>
-            </div>
-            <button type="submit" class="btn" [disabled]="!recipeForm.valid">Enregistrer</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-    <p *ngIf="message !='' && recipeForm.valid">{{message}}</p>
-</div> -->
-
-
-
-
-
 <div class="main">
   <img src="assets/images/add-recipe.jpg">
     <div class="meta">
       <div>
         <button class="btn-back" (click)="goBack()">Retour</button>
+
         <form class="meta" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
           <input type="text" placeholder="Nom de la recette" formControlName="name">
           <label class="title" for="tempsCuisson">Cuisson :</label>
             <input type="text" formControlName="tempsCuisson" placeholder="Ex: 20min à 180°">
-
-
-            <div formArrayName="ingredients">
-              <label class="title" for="ingredients">Ingredients:</label>
+          <div formArrayName="ingredients">
+            <label class="title" for="ingredients">Ingredients:</label>
               <div *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
                 <input type="number" formControlName="quantity" class="input-ingredient">
-                  <input type="text" formControlName="uniteMesure" placeholder="Ex: ml/gr/...">
-                  <input type="text" formControlName="name">
-                  <button (click)="deleteIngredient(i)">X</button>
+                <input type="text" formControlName="uniteMesure" placeholder="Ex: ml/gr/...">
+
+                <select  formControlName="alimentId" name="alimentId" id="alimentId">
+                  <option *ngFor="let aliment of aliments" [value]="aliment.id" [selected]="i === 0">{{ aliment.name }}</option>
+                </select>
+
+                <button (click)="deleteIngredient(i)">X</button>
               </div>
-            </div>
+          </div>
             <button type="button" (click)="addIngredient()">Ajouter ingrédient</button>
-
-
-
           <label class="title" for="instruction">Instructions:</label>
             <textarea formControlName="instruction" rows="20" cols="55"></textarea>
-            <button class="btn" type="submit" [disabled]="!recipeForm.valid">Enregistrer</button>
+            <button class="btn" type="submit">Enregistrer</button>
         </form>
+
       </div>
     </div>
 </div>

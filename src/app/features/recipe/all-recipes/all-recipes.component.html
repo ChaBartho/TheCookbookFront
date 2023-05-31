@@ -7,11 +7,6 @@
           <h2>Toutes mes recettes</h2>
           <input type="text" placeholder="Tapez le nom de la recette" [(ngModel)]="name" (keydown.enter)="searchRecipe()">
         </div>
-
-
-        <!-- <app-search-recipe *ngIf="result" [result]="result" class="popup"></app-search-recipe> -->
-
-
         <br><br><br><br>
         <div>
             <div class="container-recipe" *ngFor="let recipe of recipes">

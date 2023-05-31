@@ -1,7 +1,10 @@
 import { Component,OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ingredient, Recipe } from 'src/app/shared/model/cookbook';
+import { NotificationService } from 'src/app/shared/service/notification.service';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-one-recipe',
@@ -9,11 +12,17 @@ import { RecipeService } from 'src/app/shared/service/recipe.service';
   styleUrls: ['./one-recipe.component.scss']
 })
 export class OneRecipeComponent implements OnInit{
+  index! : number;
+  recipes : Recipe[] = [];
   id! : number;
   recipe! : Recipe;
   ingredients! : Ingredient[];
 
-  constructor(private _route : ActivatedRoute, private _recipeService : RecipeService,  private router: Router){}
+  constructor(private _route : ActivatedRoute,
+    private _recipeService : RecipeService,
+    private router: Router,
+    private dialog: MatDialog,
+    private notif : NotificationService){}
 
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
@@ -40,6 +49,29 @@ export class OneRecipeComponent implements OnInit{
 
   goBack() {
     this.router.navigate(['/all-recipes']);
+  }
+
+  deleteRecipe(id: number){
+    this._recipeService.deleteRecipe(id).subscribe(() => {
+      this.index = this.recipes.findIndex(recipe => recipe.id === id);
+      this.recipes.splice(this.index, 1);
+      this.notif.openSnackBar("Recette bien supprimée");
+    });
+   }
+
+  async confirmation(id: number): Promise<boolean> {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      data: {id: id}
+    });
+    const result = await dialogRef.afterClosed().toPromise();
+    return result === true;
+  }
+
+  async onDelete(id: number) {
+    const isConfirmed = await this.confirmation(id);
+    if (isConfirmed) {
+      this.deleteRecipe(id);
+    }
   }
 
 
