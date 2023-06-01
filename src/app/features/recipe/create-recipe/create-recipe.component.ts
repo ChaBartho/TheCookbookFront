@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Aliment } from 'src/app/shared/model/cookbook';
 import { AlimentService } from 'src/app/shared/service/aliment.service';
+import { NotificationService } from 'src/app/shared/service/notification.service';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class CreateRecipeComponent implements OnInit{
   aliments : Aliment[] = [];
   recipeForm! : FormGroup;
 
-  constructor(private _recipeService : RecipeService, private _alimentService : AlimentService, private route: ActivatedRoute, private router: Router){}
+  constructor(private _recipeService : RecipeService,
+    private _alimentService : AlimentService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private notif : NotificationService){}
 
   ngOnInit() {
     this.initForm();
@@ -22,9 +27,9 @@ export class CreateRecipeComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.recipeForm)
     this._recipeService.addRecipe(this.recipeForm.value).subscribe(() => {
       this.recipeForm.reset();
+      this.notif.openSnackBar("Recette bien ajoutée !");
       this.router.navigate(['/all-recipes']);
     })
   }
@@ -58,7 +63,7 @@ export class CreateRecipeComponent implements OnInit{
       new FormGroup({
         'name': new FormControl('', Validators.required),
         'uniteMesure': new FormControl('', Validators.required),
-        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
+        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
         'alimentId': new FormControl(recipeAliment, Validators.required)
       })
     ]);

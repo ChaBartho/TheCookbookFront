@@ -7,7 +7,7 @@
   <p class="title">Ingrédients : </p>
   <ul>
     <li *ngFor="let ingredient of ingredients">
-       {{ ingredient.quantity }}{{ ingredient.uniteMesure }} {{ ingredient.name }}
+      <button class="btn-add" type="button" (click)="pending()">+</button> {{ ingredient.quantity }}{{ ingredient.uniteMesure }} {{ ingredient.name }}
     </li>
   </ul>
   <p class="title"> Instructions : </p>

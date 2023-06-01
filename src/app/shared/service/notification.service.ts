@@ -10,13 +10,13 @@ export class NotificationService {
 
   openSnackBar(message: string) {
     this.snackBar.open(message, '', {
-      duration: 2000
+      duration: 3000
     });
   }
 
   noRecipe(message:string) {
     this.snackBar.open(message, '', {
-      duration: 4000
+      duration: 3000
     });
   }
 

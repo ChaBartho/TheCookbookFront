@@ -54,3 +54,21 @@ p, ul, li {
   background-color: #e49201;
   color: #52263f;
 }
+.btn-add {
+  margin: 10px;
+  cursor: pointer;
+  //display: flex;
+  align-items: left;
+  border: 2px solid #e49201;
+  border-radius: 30px;
+  padding: 5px 10px 5px 10px;
+  background-color: #52263f;
+  color: #e49201;
+}
+.btn-add:hover {
+  background-color: #e49201;
+  color: #52263f;
+}
+ul, li {
+  list-style: none;
+}

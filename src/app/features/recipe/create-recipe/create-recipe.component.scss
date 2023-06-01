@@ -4,7 +4,7 @@ img {
 }
 .main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: #52263f;
 }
 .meta {
@@ -21,10 +21,6 @@ img {
   font-size: 25px;
   border-bottom: 1px solid #e49201;
 }
-// h2 {
-//   font-size: 30px;
-//   color: #e49201;
-// }
 .container-form {
   margin: 0% 20% 0% 20%;
 }
@@ -35,27 +31,41 @@ input {
 }
 textarea {
   margin: 10px;
+  border: 2px solid #e49201;
+  background-color: #52263f;
+  color: #C28593;
+  font-size: 18px;
   border-radius: 5px;
-}
-.input-name{
-  display: flex;
-  justify-content: center;
-
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .input-cuisson {
-
+  border: 2px solid #e49201;
+  background-color: #52263f;
+  color: #C28593;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .input-quantity {
-  width: 8%;
+  border: 2px solid #e49201;
+  width: 10%;
+  background-color: #52263f;
+  color: #C28593;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .input-uniteMesure {
-  width: 5%;
+  border: 2px solid #e49201;
+  width: 10%;
+  background-color: #52263f;
+  color: #C28593;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .select-aliment {
+  border: 2px solid #e49201;
+  border-radius: 5px;
   margin: 10px;
+  background-color: #52263f;
+  color: #C28593;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-
 .btn-add {
   margin: 10px;
   cursor: pointer;
@@ -117,12 +127,6 @@ textarea {
   color: #830b17;
 }
 
-
-
-
-
-
-
 //Mouvement du text lors du click :
 .transition, .form-title .question label{
   -moz-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
@@ -130,6 +134,7 @@ textarea {
   -webkit-transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
   transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
 }
+
 //Forme de l'input :
 .form-title {
   position: relative;
@@ -140,7 +145,6 @@ textarea {
   padding: 30px 25px;
   background-color: #52263f;
   border-radius: 40px;
-  margin: 40px 0;
   left: 50%;
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
@@ -190,6 +194,10 @@ textarea {
 .form-title .question input[type="text"]:valid {
   margin-top: 30px;
 }
+
+
+
+
 //Transformation du text lors du click:
 .form-title .question input[type="text"]:focus ~ label {
   -moz-transform: translate(0, -35px);
@@ -197,12 +205,3 @@ textarea {
   -webkit-transform: translate(0, -35px);
   transform: translate(0, -50px);
 }
-
-// form .question input[type="text"]:valid ~ label {
-//   text-transform: uppercase;
-//   font-style: italic;
-//   -moz-transform: translate(5px, -35px) scale(0.6);
-//   -ms-transform: translate(5px, -35px) scale(0.6);
-//   -webkit-transform: translate(5px, -35px) scale(0.6);
-//   transform: translate(5px, -35px) scale(0.6);
-// }

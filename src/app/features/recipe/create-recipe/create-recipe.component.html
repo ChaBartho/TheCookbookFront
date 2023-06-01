@@ -2,47 +2,38 @@
   <img src="assets/images/add-recipe.jpg">
     <div class="meta">
 
-      <!-- <div> -->
         <div class="container-form">
           <button class="btn-back" (click)="goBack()">Retour</button>
-
           <form class="meta" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
 
-            <!-- <div class="input-name">
-              <input type="text" formControlName="name" placeholder="Nom de la recette">
-            </div> -->
-
-            <form class="form-title">
+            <div class="form-title">
               <div class="question">
-                <input type="text" required/>
+                <input type="text" formControlName="name">
                 <label>Nom de la recette</label>
               </div>
-            </form>
-
+            </div>
 
             <label class="title" for="tempsCuisson">Cuisson :</label>
               <input type="text" formControlName="tempsCuisson" class="input-cuisson" placeholder="Ex: 20min à 180°">
             <label class="title" for="ingredients">Ingredients:</label>
             <div formArrayName="ingredients">
+
               <div *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
-                <input type="number" formControlName="quantity" class="input-quantity" placeholder="Ex: 100">
+                <input type="number" formControlName="quantity" min="0" class="input-quantity" placeholder="Ex: 100">
                 <input type="text" formControlName="uniteMesure" class="input-uniteMesure" placeholder="Ex: ml">
                 <select formControlName="alimentId" name="alimentId" id="alimentId" class="select-aliment">
-                  <option *ngFor="let aliment of aliments" [value]="aliment.id" [selected]="i === 0">{{ aliment.name }}</option>
+                  <option *ngFor="let aliment of aliments" [value]="aliment.id" >{{ aliment.name }}</option>
                 </select>
                 <button class="btn-delete" (click)="deleteIngredient(i)">X</button>
               </div>
+
                 <button class="btn-add" type="button" (click)="addIngredient()">+ ajouter</button>
             </div>
             <label class="title" for="instruction">Instructions:</label>
-            <textarea formControlName="instruction" rows="20"></textarea>
+            <textarea formControlName="instruction" rows="10" placeholder="Veuillez écrire les instructions de votre recette ici"></textarea>
             <button class="btn-submit" type="submit">Enregistrer</button>
           </form>
-
         </div>
-      <!-- </div> -->
-
-
 
     </div>
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Ingredient, Recipe } from 'src/app/shared/model/cookbook';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/shared/service/notification.service';
 
 @Component({
   selector: 'app-search-recipe',
@@ -18,7 +19,8 @@ export class SearchRecipeComponent implements OnInit{
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { result: Recipe },
   private _route : ActivatedRoute, private _recipeService : RecipeService,
-  public dialogRef: MatDialogRef<SearchRecipeComponent>) {
+  public dialogRef: MatDialogRef<SearchRecipeComponent>,
+  private notif : NotificationService) {
     this.result = data.result;
     this.getIngredients(this.result.id);
   }
@@ -36,5 +38,9 @@ export class SearchRecipeComponent implements OnInit{
 
   closeModal(): void{
     this.dialogRef.close();
+  }
+
+  pending(){
+    this.notif.openSnackBar("Reste calme, la suite arrive plus tard !")
   }
 }

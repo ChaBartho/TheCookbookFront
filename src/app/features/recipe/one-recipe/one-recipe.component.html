@@ -10,15 +10,14 @@
         <p class="title">Ingrédients : </p>
         <ul>
           <li *ngFor="let ingredient of ingredients">
-            {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
+            <button class="btn-add" type="button" (click)="pending()">+</button> {{ ingredient.quantity }}{{ ingredient.uniteMesure }}  {{ ingredient.name }}
           </li>
         </ul>
         <p class="title"> Instructions : </p>
         <p>{{ recipe.instruction }}</p>
-
         <div>
-          <button class="btn">Ajouter à ShoppingList</button>
-          <button class="btn">Modifier</button>
+          <button class="btn" (click)="pending()">Ajouter à ShoppingList</button>
+          <button class="btn" (click)="modify()">Modifier</button>
           <button class="btn" (click)="onDelete(recipe.id)">Supprimer</button>
         </div>
       </div>

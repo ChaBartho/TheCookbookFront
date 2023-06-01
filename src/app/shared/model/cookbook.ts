@@ -15,11 +15,16 @@ export interface Aliment {
   id: number;
   name: string;
 }
-export interface Shoppinglist {
-  id: number;
-  Aliment: [];
+
+
+
+
+export interface ShoppingList {
+  name: string;
   quantity: number;
-  creationDate: string
+}
+export interface Item {
+  name: string;
 }
 export interface User {
   id: number;
