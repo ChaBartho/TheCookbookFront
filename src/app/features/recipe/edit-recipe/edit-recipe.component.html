@@ -1,0 +1,40 @@
+<div class="main">
+  <img src="assets/images/add-recipe.jpg">
+    <div class="meta">
+        <div class="container-form">
+          <button class="btn-back" (click)="goBack()">Annuler</button>
+
+          <form class="meta" [formGroup]="editForm" (ngSubmit)="update(id)">
+            <div class="form-title">
+              <div class="question">
+                <input type="text" formControlName="name">
+              </div>
+            </div>
+            <label class="title" for="tempsCuisson">Cuisson :</label>
+              <input type="text" formControlName="tempsCuisson" class="input-cuisson">
+
+
+
+            <label class="title" for="ingredients">Ingredients:</label>
+            <div formArrayName="ingredients">
+              <div *ngFor="let ingredient of ingredients; let i = index" [formGroupName]="i">
+                <input type="number" formControlName="quantity" min="0" class="input-quantity">
+                <input type="text" formControlName="uniteMesure" class="input-uniteMesure">
+                <select formControlName="alimentId" name="alimentId" id="alimentId" class="select-aliment">
+                  <option *ngFor="let aliment of aliments" [value]="aliment.id" >{{ aliment.name }}</option>
+                </select>
+                <button class="btn-delete" (click)="deleteIngredient(i)">X</button>
+              </div>
+                <button class="btn-add" type="button" (click)="addIngredient()">+ ajouter</button>
+            </div>
+
+
+
+            <label class="title" for="instruction">Instructions:</label>
+            <textarea formControlName="instruction" rows="10"></textarea>
+            <button class="btn-submit" type="submit">Mettre à jour ma recette</button>
+          </form>
+
+        </div>
+    </div>
+</div>

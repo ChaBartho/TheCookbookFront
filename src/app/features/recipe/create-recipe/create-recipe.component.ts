@@ -17,20 +17,48 @@ export class CreateRecipeComponent implements OnInit{
 
   constructor(private _recipeService : RecipeService,
     private _alimentService : AlimentService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private notif : NotificationService){}
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _notif : NotificationService){}
 
   ngOnInit() {
     this.initForm();
     this.getAliments();
   }
 
+  private initForm(){
+    let recipeName = '';
+    let recipeTempsCuisson = '';
+    let recipeInstruction = '';
+    let recipeAliment = '';
+    let recipeIngredients = new FormArray([
+      new FormGroup({
+        'name': new FormControl('', Validators.required),
+        'uniteMesure': new FormControl('', Validators.required),
+        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
+        'alimentId': new FormControl(recipeAliment, Validators.required)
+      })
+    ]);
+    this.recipeForm = new FormGroup({
+      'name': new FormControl(recipeName, Validators.required),
+      'tempsCuisson': new FormControl(recipeTempsCuisson, Validators.required),
+      'instruction': new FormControl(recipeInstruction, Validators.required),
+      'ingredients': recipeIngredients
+    })
+  }
+
+  getAliments() {
+    this._alimentService.getAllAliments().subscribe((allAliments : Aliment[]) => {
+      this.aliments = allAliments
+      console.log(this.aliments);
+    });
+  }
+
   onSubmit(){
     this._recipeService.addRecipe(this.recipeForm.value).subscribe(() => {
       this.recipeForm.reset();
-      this.notif.openSnackBar("Recette bien ajoutée !");
-      this.router.navigate(['/all-recipes']);
+      this._notif.openSnackBar("Recette bien ajoutée !");
+      this._router.navigate(['/all-recipes']);
     })
   }
 
@@ -50,41 +78,12 @@ export class CreateRecipeComponent implements OnInit{
   }
 
   goBack() {
-    this.router.navigate(['../'], {relativeTo: this.route});
-  }
-
-  private initForm(){
-    let recipeName = '';
-    let recipeTempsCuisson = '';
-    let recipeInstruction = '';
-    let recipeAliment = '';
-
-    let recipeIngredients = new FormArray([
-      new FormGroup({
-        'name': new FormControl('', Validators.required),
-        'uniteMesure': new FormControl('', Validators.required),
-        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
-        'alimentId': new FormControl(recipeAliment, Validators.required)
-      })
-    ]);
-
-    this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'tempsCuisson': new FormControl(recipeTempsCuisson, Validators.required),
-      'instruction': new FormControl(recipeInstruction, Validators.required),
-      'ingredients': recipeIngredients
-    })
+    this._router.navigate(['../'], {relativeTo: this._route});
   }
 
   get controls() {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
-  getAliments() {
-    this._alimentService.getAllAliments().subscribe((allAliments : Aliment[]) => {
-      this.aliments = allAliments
-      console.log(this.aliments);
-    });
-  }
 
 }

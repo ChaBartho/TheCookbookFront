@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EditRecipeComponent } from './features/recipe/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     EditShoppingListComponent,
     HomeComponent,
     SearchRecipeComponent,
-    PopUpComponent
+    PopUpComponent,
+    EditRecipeComponent
   ],
   imports: [
     BrowserModule,

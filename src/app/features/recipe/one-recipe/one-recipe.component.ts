@@ -5,7 +5,6 @@ import { Ingredient, Recipe } from 'src/app/shared/model/cookbook';
 import { NotificationService } from 'src/app/shared/service/notification.service';
 import { RecipeService } from 'src/app/shared/service/recipe.service';
 import { PopUpComponent } from '../pop-up/pop-up.component';
-import { ShoppinglistService } from 'src/app/shared/service/shoppinglist.service';
 
 @Component({
   selector: 'app-one-recipe',
@@ -28,26 +27,34 @@ export class OneRecipeComponent implements OnInit{
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
     this.getOneRecipe(this.id);
-    this.getIngredients(this.id);
+    //this.getIngredients(this.id);
   }
+
   getOneRecipe(id : number){
     this._recipeService.getOneRecipe(id).subscribe(
       recipe => {
         this.recipe = recipe;
+        this._recipeService.getIngredientsByRecipe(id).subscribe(
+          (ingredients: Ingredient[]) => {
+          this.ingredients = ingredients;
+          })
       },
       error => {
         console.log(error);
       }
     );
   }
-  getIngredients(id: number) {
-    this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {
-    this.ingredients = ingredients;
-    })
-  }
+
+  // getIngredients(id: number) {
+  //   this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {
+  //   this.ingredients = ingredients;
+  //   })
+  // }
+
   goBack() {
     this.router.navigate(['/all-recipes']);
   }
+
   deleteRecipe(id: number){
     this._recipeService.deleteRecipe(id).subscribe(() => {
       this.index = this.recipes.findIndex(recipe => recipe.id === id);
@@ -56,6 +63,7 @@ export class OneRecipeComponent implements OnInit{
       this.router.navigate(['/all-recipes']);
     });
    }
+
   async confirmation(id: number): Promise<boolean> {
     const dialogRef = this.dialog.open(PopUpComponent, {
       data: {id: id}
@@ -63,6 +71,7 @@ export class OneRecipeComponent implements OnInit{
     const result = await dialogRef.afterClosed().toPromise();
     return result === true;
   }
+
   async onDelete(id: number) {
     const isConfirmed = await this.confirmation(id);
     if (isConfirmed) {
@@ -71,11 +80,17 @@ export class OneRecipeComponent implements OnInit{
   }
 
 
-  pending(){
-    this.notif.openSnackBar("Reste calme, la suite arrive plus tard !")
+
+
+
+  addOnetoSL(name: string){
+
+    this.notif.openSnackBar("Bien ajouté !")
   }
-  modify(){
-    this.notif.openSnackBar("J'AI PAS EU LE TEMPS")
+
+  addAlltoSL(){
+
+    this.notif.openSnackBar("Bien ajouté !")
   }
 
 

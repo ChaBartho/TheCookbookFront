@@ -7,12 +7,14 @@ import { CreateRecipeComponent } from './features/recipe/create-recipe/create-re
 import { EditShoppingListComponent } from './features/shopping-list/edit-shopping-list/edit-shopping-list.component';
 import { AuthComponent } from './core/auth/auth.component';
 import { HomeComponent } from './features/home/home.component';
+import { EditRecipeComponent } from './features/recipe/edit-recipe/edit-recipe.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'all-recipes', component: AllRecipesComponent},
   {path: 'create-recipe', component: CreateRecipeComponent},
   {path: 'one-recipe/:id', component: OneRecipeComponent},
+  {path: 'edit-recipe/:id', component: EditRecipeComponent},
 
   {path: 'shopping-list', component: ShoppingListComponent, children : [
     {path: 'edit-shopping-list', component: EditShoppingListComponent}
