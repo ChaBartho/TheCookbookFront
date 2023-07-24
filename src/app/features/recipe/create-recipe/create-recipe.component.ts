@@ -22,30 +22,43 @@ export class CreateRecipeComponent implements OnInit{
     private _notif : NotificationService){}
 
   ngOnInit() {
-    this.initForm();
+    this.recipeForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      tempsCuisson: new FormControl(null, Validators.required),
+      instruction: new FormControl(null, Validators.required),
+      ingredients: new FormArray([
+        new FormGroup({
+          name: new FormControl(null, Validators.required),
+          uniteMesure: new FormControl(null, Validators.required),
+          quantity: new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
+          alimentId: new FormControl(null, Validators.required),
+        })
+      ])
+    })
+    //this.initForm();
     this.getAliments();
   }
 
-  private initForm(){
-    let recipeName = '';
-    let recipeTempsCuisson = '';
-    let recipeInstruction = '';
-    let recipeAliment = '';
-    let recipeIngredients = new FormArray([
-      new FormGroup({
-        'name': new FormControl('', Validators.required),
-        'uniteMesure': new FormControl('', Validators.required),
-        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
-        'alimentId': new FormControl(recipeAliment, Validators.required)
-      })
-    ]);
-    this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'tempsCuisson': new FormControl(recipeTempsCuisson, Validators.required),
-      'instruction': new FormControl(recipeInstruction, Validators.required),
-      'ingredients': recipeIngredients
-    })
-  }
+  // private initForm(){
+  //   let recipeName = '';
+  //   let recipeTempsCuisson = '';
+  //   let recipeInstruction = '';
+  //   let recipeAliment = '';
+  //   let recipeIngredients = new FormArray([
+  //     new FormGroup({
+  //       'name': new FormControl('', Validators.required),
+  //       'uniteMesure': new FormControl('', Validators.required),
+  //       'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/), Validators.min(1)]),
+  //       'alimentId': new FormControl(recipeAliment, Validators.required)
+  //     })
+  //   ]);
+  //   this.recipeForm = new FormGroup({
+  //     'name': new FormControl(recipeName, Validators.required),
+  //     'tempsCuisson': new FormControl(recipeTempsCuisson, Validators.required),
+  //     'instruction': new FormControl(recipeInstruction, Validators.required),
+  //     'ingredients': recipeIngredients
+  //   })
+  // }
 
   getAliments() {
     this._alimentService.getAllAliments().subscribe((allAliments : Aliment[]) => {
@@ -65,10 +78,10 @@ export class CreateRecipeComponent implements OnInit{
   addIngredient(){
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        'name': new FormControl('', Validators.required),
-        'uniteMesure': new FormControl('', Validators.required),
-        'quantity': new FormControl('', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
-        'alimentId' : new FormControl('', Validators.required)
+        name: new FormControl(null, Validators.required),
+        uniteMesure: new FormControl(null, Validators.required),
+        quantity: new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]),
+        alimentId: new FormControl(null, Validators.required)
       })
     );
   }
@@ -82,7 +95,7 @@ export class CreateRecipeComponent implements OnInit{
   }
 
   get controls() {
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+    return (this.recipeForm.get('ingredients') as FormArray).controls;
   }
 
 

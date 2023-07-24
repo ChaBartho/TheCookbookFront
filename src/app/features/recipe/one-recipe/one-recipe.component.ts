@@ -27,7 +27,6 @@ export class OneRecipeComponent implements OnInit{
   ngOnInit() {
     this.id = this._route.snapshot.params['id'];
     this.getOneRecipe(this.id);
-    //this.getIngredients(this.id);
   }
 
   getOneRecipe(id : number){
@@ -44,12 +43,6 @@ export class OneRecipeComponent implements OnInit{
       }
     );
   }
-
-  // getIngredients(id: number) {
-  //   this._recipeService.getIngredientsByRecipe(id).subscribe((ingredients: Ingredient[]) => {
-  //   this.ingredients = ingredients;
-  //   })
-  // }
 
   goBack() {
     this.router.navigate(['/all-recipes']);
