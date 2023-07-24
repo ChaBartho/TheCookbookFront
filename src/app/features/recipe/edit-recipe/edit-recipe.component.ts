@@ -27,10 +27,10 @@ export class EditRecipeComponent implements OnInit{
     private _fb: FormBuilder) {}
 
   ngOnInit() {
-    //this.id = this._route.snapshot.params['id'];
-    //this.editRecipe(this.id);
-    //this.editIngredient(this.id);
+    this.editRecipe();
+  }
 
+  editRecipe() {
     this.editForm = this._fb.group({
       name: [null, Validators.required],
       tempsCuisson: [null, Validators.required],
@@ -71,53 +71,18 @@ export class EditRecipeComponent implements OnInit{
     });
   }
 
-
-
-
-
-  // editRecipe(id: number){
-  //   this.editForm = this._fb.group({
-  //     name: '',
-  //     tempsCuisson: '',
-  //     instruction: '',
-  //     ingredients: this._fb.array([])
-  //   });
-  //   this._recipeService.getOneRecipe(id).subscribe(
-  //     recipe => {
-  //       this.editForm.patchValue({
-  //         name: recipe.name,
-  //         tempsCuisson: recipe.tempsCuisson,
-  //         instruction: recipe.instruction
-  //       });
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-  // editIngredient(id: number) {
-  //   this._recipeService.getIngredientsByRecipe(id).subscribe(
-  //     (ingredients: Ingredient[]) => {
-  //       this.ingredients = ingredients;
-  //     })
-  // }
-
-
   getAliments() {
     this._alimentService.getAllAliments().subscribe((allAliments: Aliment[]) => {
       this.aliments = allAliments;
     });
   }
 
-  //onUpdate(id : number){
   onUpdate(){
     const recipeId = this._route.snapshot.params['id'];
     this._recipeService.updateRecipe(recipeId, this.editForm.value).subscribe(() => {
       this.editForm.reset();
       this._notif.openSnackBar("Recette correctement mise à jour !");
-      //this._router.navigate([`/one-recipe/${this.id}`])
-      this._router.navigate(['/all-recipes']);
+      this._router.navigate([`/one-recipe/${recipeId}`])
     })
   }
 
@@ -137,7 +102,7 @@ export class EditRecipeComponent implements OnInit{
   }
 
   deleteIngredient(index: number) {
-    (<FormArray>this.editForm.get('ingredients')).removeAt(index);
+    (this.editForm.get('ingredients') as FormArray).removeAt(index);
   }
 
 

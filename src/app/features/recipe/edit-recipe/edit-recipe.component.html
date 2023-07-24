@@ -3,7 +3,6 @@
     <div class="meta">
         <div class="container-form">
           <button class="btn-back" (click)="goBack()">Annuler</button>
-
           <form class="meta" [formGroup]="editForm" (ngSubmit)="onUpdate()">
             <div class="form-title">
               <div class="question">
@@ -14,15 +13,13 @@
               <input type="text" formControlName="tempsCuisson" class="input-cuisson">
 
 
-
             <label class="title" for="ingredients">Ingredients:</label>
-
             <div formArrayName="ingredients">
               <div *ngFor="let ingredient of ingredients; let i = index" [formGroupName]="i">
-                <input type="number" formControlName="quantity" min="0" class="input-quantity">
-                <input type="text" formControlName="uniteMesure" class="input-uniteMesure">
+                <input type="number" formControlName="quantity" min="0" class="input-quantity" [value]="ingredient.quantity">
+                <input type="text" formControlName="uniteMesure" class="input-uniteMesure" [value]="ingredient.uniteMesure">
                 <select formControlName="alimentId" name="alimentId" id="alimentId" class="select-aliment">
-                  <option *ngFor="let aliment of aliments" [value]="aliment.id" >{{ aliment.name }}</option>
+                  <option *ngFor="let aliment of aliments" [value]="aliment.id">{{ aliment.name }}</option>
                 </select>
                 <button class="btn-delete" (click)="deleteIngredient(i)">X</button>
               </div>
@@ -30,13 +27,10 @@
             </div>
 
 
-
-
             <label class="title" for="instruction">Instructions:</label>
             <textarea formControlName="instruction" rows="10"></textarea>
             <button class="btn-submit" type="submit">Mettre à jour ma recette</button>
           </form>
-
         </div>
     </div>
 </div>
